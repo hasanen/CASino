@@ -66,8 +66,9 @@ describe 'Login' do
     it { should have_text('Incorrect username or password') }
   end
 
-  context 'referer is under same app' do
+  context 'redirecting is enabled' do
     it 'redirects user to original target' do
+      CASino.config.login[:redirect] = true
       visit '/dummy/protected'
 
       sign_in fill_only: true

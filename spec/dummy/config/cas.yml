@@ -10,6 +10,8 @@ defaults: &defaults
   frontend:
     sso_name: "CASino"
     footer_text: "Powered by <a href=\"http://rbcas.com/\">CASino</a>"
+  login:
+    redirect: false
   authenticators:
     static:
       class: "CASino::StaticAuthenticator"

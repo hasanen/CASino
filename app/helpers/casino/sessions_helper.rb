@@ -24,7 +24,11 @@ module CASino::SessionsHelper
   end
 
   def ensure_signed_in
-    redirect_to login_path(path: request.original_fullpath) unless signed_in?
+    if CASino.config.login[:redirect]
+      redirect_to login_path(path: request.original_fullpath) unless signed_in?
+    else
+      redirect_to login_path unless signed_in?
+    end
   end
 
   def signed_in?

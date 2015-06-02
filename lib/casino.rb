@@ -11,6 +11,9 @@ module CASino
       sso_name: 'CASino',
       footer_text: 'Powered by <a href="http://rbcas.com/">CASino</a>'
     ),
+    login: HashWithIndifferentAccess.new(
+      redirect: false,
+    ),
     implementors: HashWithIndifferentAccess.new(
       login_ticket: nil,
       proxy_granting_ticket: nil,
