@@ -65,4 +65,15 @@ describe 'Login' do
     it { should have_button('Login') }
     it { should have_text('Incorrect username or password') }
   end
+
+  context 'referer is under same app' do
+    it 'redirects user to original target' do
+      visit '/dummy/protected'
+
+      sign_in fill_only: true
+
+      current_path.should eq('/dummy/protected')
+    end
+
+  end
 end

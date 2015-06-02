@@ -24,7 +24,7 @@ module CASino::SessionsHelper
   end
 
   def ensure_signed_in
-    redirect_to login_path unless signed_in?
+    redirect_to login_path(path: request.original_fullpath) unless signed_in?
   end
 
   def signed_in?
@@ -64,6 +64,7 @@ module CASino::SessionsHelper
           Rails.logger.warn "Service #{params[:service]} not valid: #{e}"
         end
       end
+      redirect_to params[:path] and return if params[:path]
       redirect_to sessions_path, status: :see_other
     end
   end
